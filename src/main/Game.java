@@ -18,12 +18,13 @@ public class Game extends JFrame implements Runnable {
     }
 
     private void createScreen(){
-        setSize(400,400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setVisible(true);
         gameScreen = new GameScreen();
         add(gameScreen);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        pack();
+        setVisible(true);
+        setLocationRelativeTo(null);
         gameScreen.requestFocus();
     }
 
