@@ -1,6 +1,7 @@
 package inputs;
 
 import main.GameScreen;
+
 import static utils.Constants.Directions.*;
 
 import java.awt.event.KeyEvent;
@@ -9,9 +10,11 @@ import java.awt.event.KeyListener;
 
 public class KeyboardsInputs implements KeyListener {
     GameScreen gameScreen;
-    public KeyboardsInputs(GameScreen gameScreen){
+
+    public KeyboardsInputs(GameScreen gameScreen) {
         this.gameScreen = gameScreen;
     }
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -19,31 +22,38 @@ public class KeyboardsInputs implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()){
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
-                gameScreen.setDirection(UP);
+                gameScreen.getGame().getPlayer().setUp(true);
                 break;
             case KeyEvent.VK_LEFT:
-                gameScreen.setDirection(LEFT);
+                gameScreen.getGame().getPlayer().setLeft(true);
                 break;
             case KeyEvent.VK_DOWN:
-                gameScreen.setDirection(DOWN);
+                gameScreen.getGame().getPlayer().setDown(true);
                 break;
             case KeyEvent.VK_RIGHT:
-                gameScreen.setDirection(RIGHT);
+                gameScreen.getGame().getPlayer().setRight(true);
                 break;
-
         }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE)
+            gameScreen.getGame().getPlayer().setHighFiving(true);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()){
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
+                gameScreen.getGame().getPlayer().setUp(false);
+                break;
             case KeyEvent.VK_LEFT:
+                gameScreen.getGame().getPlayer().setLeft(false);
+                break;
             case KeyEvent.VK_DOWN:
+                gameScreen.getGame().getPlayer().setDown(false);
+                break;
             case KeyEvent.VK_RIGHT:
-                gameScreen.setMoving(false);
+                gameScreen.getGame().getPlayer().setRight(false);
                 break;
         }
     }

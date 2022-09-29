@@ -11,13 +11,16 @@ public class Constants {
     public static class PlayerConstants{
         public static final int IDLE = 0;
         public static final int RUNNING = 1;
+        public static final int HIGHFIVING = 2;
 
         public static int GetSpriteAmount(int playerAction){
             switch(playerAction){
                 case IDLE:
-                    return 8;
+                    return 9;
                 case RUNNING:
                     return 5;
+                case HIGHFIVING:
+                    return 7;
                 default:
                     return 1;
             }
