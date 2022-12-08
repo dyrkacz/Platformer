@@ -12,11 +12,15 @@ public class LevelManager {
 
     public LevelManager(Game game){
         this.game = game;
-        levelOne = new Level(LoadSave.getLevelData());
+        levelOne = new Level(LoadSave.getLevelImage(),LoadSave.getLevelData());
     }
 
     public void draw(Graphics g){
         g.drawImage(levelOne.getLevel(), 0, 0, (int) (Game.TILES_IN_WIDTH*Game.TILES_DEFAULT_SIZE*Game.SCALE),(int) (Game.TILES_IN_HEIGHT*Game.TILES_DEFAULT_SIZE* Game.SCALE), null);
+    }
+
+    public Level getCurrentLevel(){
+        return levelOne;
     }
 
 

@@ -17,9 +17,9 @@ public class Game extends JFrame implements Runnable {
     private LevelManager levelManager;
 
     public final static int TILES_DEFAULT_SIZE = 32;
-    public final static float SCALE = 2f;
-    public final static int TILES_IN_WIDTH = 26;
-    public final static int TILES_IN_HEIGHT = 14;
+    public final static float SCALE = 1f;
+    public final static int TILES_IN_WIDTH = 40;
+    public final static int TILES_IN_HEIGHT = 25;
     public final static int TILES_SIZE = (int) (TILES_DEFAULT_SIZE * SCALE);
     public final static int GAME_WIDTH = TILES_SIZE * TILES_IN_WIDTH;
     public final static int GAME_HEIGHT = TILES_SIZE * TILES_IN_HEIGHT;
@@ -36,8 +36,9 @@ public class Game extends JFrame implements Runnable {
         gameThread.start();
     }
     private void initClasses(){
-        player = new Player(200,200, (int) (64 * SCALE) ,(int) (40 * SCALE) );
         levelManager = new LevelManager(this);
+        player = new Player(200,200, (int) (128 * SCALE) ,(int) (80 * SCALE) );
+        player.loadLvlData(levelManager.getCurrentLevel().getLvlData());
     }
 
     private void createScreen() {
@@ -58,6 +59,7 @@ public class Game extends JFrame implements Runnable {
                 windowFocusLost();
             }
         });
+        gameScreen.setFocusable(true);
         gameScreen.requestFocus();
     }
 
